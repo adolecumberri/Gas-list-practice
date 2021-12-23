@@ -49,17 +49,12 @@ lo hago porque puedo. No por correccion. */
   justify-content: center;
 }
 
-.gas-form>.form-title {}
-
 .gas-form input {
   width: 100%;
   height: 32px;
   padding: 0 8px;
   box-sizing: border-box;
 }
-
-
-.gas-form>.form-input {}
 
 input.form-btn {
   color: #fff;

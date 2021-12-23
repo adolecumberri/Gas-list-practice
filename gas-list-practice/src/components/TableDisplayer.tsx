@@ -1,5 +1,5 @@
 
-import React, { CSSProperties, Dispatch, FC, useCallback, useState } from 'react';
+import React, { CSSProperties, Dispatch, FC, useCallback } from 'react';
 import { IProduct } from '../interface/products';
 
 
@@ -54,16 +54,18 @@ const TableDisplayer: FC<ITableDisplayerProps> = ({ data, setGasData, gasData, s
         , [gasData]);
 
 
+    const checkMeasure = (value: string) => ({ rate: "£", dailystandingcharge: "£", renewable: "%" })[value]
+
     const loadToolTip = useCallback((
-        a : IProduct) =>
+        a: IProduct) =>
         <>
             <div className="info-body">
                 <div>
-                    <h4 className="" style={{ borderBottom: "2px solid #000" }} >More Information: </h4>
+                    <h4 className="" style={{ borderBottom: "2px solid #000", width: "100%" }} >More Information: </h4>
                 </div>
                 {Object.keys(a).map(value =>
                     <div>
-                        <span>{value}:</span> <span>{a[value]}</span>
+                        <span>{value}:</span> <span>{a[value]} {checkMeasure(value)}</span>
                     </div>)}
             </div>
         </>
@@ -78,8 +80,10 @@ const TableDisplayer: FC<ITableDisplayerProps> = ({ data, setGasData, gasData, s
                 <div style={s.tableCol}>{product.contractlength} months</div>
                 <div style={s.tableCol}>
                     <input
+                        className="form-btn"
+                        style={{ padding: "6px" }}
                         type="button"
-                        value="btn"
+                        value="More Info"
                         onClick={() => setToolTipContent(loadToolTip(product))}
                     />
                 </div>

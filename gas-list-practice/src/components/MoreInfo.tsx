@@ -1,9 +1,4 @@
-//Entrada del bar
-
-import React, { Dispatch, FC, ReactNode, useContext } from "react";
-
-
-
+import React, { Dispatch, FC, ReactNode } from "react";
 
 interface IMoreInfo {
     key?: string
@@ -14,11 +9,9 @@ interface IMoreInfo {
 
 const MoreInfo: FC<IMoreInfo> = ({ children, key = "more-info", content, hidden, setToolTipContent }) => {
 
-
     if (hidden) {
         return <></>;
     }
-
     return (
         <>
             <div

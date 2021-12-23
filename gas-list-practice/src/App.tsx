@@ -1,18 +1,24 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import MoreInfo from './components/MoreInfo';
 import Searcher from './components/Searcher';
 import TableDisplayer from './components/TableDisplayer';
-import { IProduct } from './interface/products';
 import { generateProducts } from './utils';
-import { DATA_TEMPLATE } from './utils/data';
 
 function App() {
 
-
+  /**
+   * Gass Information.
+   */
   const [gasData, setGasData] = useState<number>(1);
 
-  const [products, useProducts] = useState(generateProducts(10));
+  /**
+   * Products generated Randomly
+   */
+  const [products] = useState(generateProducts(10));
+  /**
+   * ToolTip Children property. it's a JSX.Element when it's defined.
+   */
   const [toolTipContent, setToolTipContent] = useState<any>(undefined);
 
 
