@@ -15,14 +15,14 @@ html, body {
   display: flex;
 }
 
+
+
+/* GAS-FORM STYLES */
+
 .gas-form {
   padding: 48px;
   height: 200px;
   width: 200px;
-  /* display: inherit;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
 }
 
 .gas-form > div{
@@ -33,20 +33,28 @@ html, body {
   align-items: center;
 }
 
-.gas-form > .form-title{
-
-}
+.gas-form > .form-title{}
 
 .gas-form input {
   width: 100%;
   height: 32px;
+  padding: 0 8px;
+  box-sizing: border-box;
 }
 
-.gas-form > .form-input{
-}
+.gas-form > .form-input{}
 
 input.form-btn{
   color: #fff;
   background-color: #70ad47;
+  border: unset;
+}
+
+/* Table displayer STYLES */
+.table-heder > div {
+  background-color: #70ad47;
+  height: 40px;
+  color: #fff;
+  line-height: 40px !important;
 }
 

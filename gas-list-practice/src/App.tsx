@@ -9,14 +9,14 @@ import { DATA_TEMPLATE } from './utils/data';
 function App() {
 
 
-  const [gasData, useGasData] = useState<number>(0);
+  const [gasData, setGasData] = useState<number>(1);
 
   const [products, useProducts] = useState(generateProducts(10));
 
   console.log(products);
 
   return (<>
-    {!gasData ? <Searcher gasHandler={useGasData} gasData ={gasData} /> : <TableDisplayer />}
+    {!gasData ? <Searcher setGasData={setGasData} gasData={gasData} /> : <TableDisplayer data={products} gasData={gasData} setGasData={setGasData}/>}
   </>
 
   );

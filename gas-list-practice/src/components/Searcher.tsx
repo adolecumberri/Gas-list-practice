@@ -1,12 +1,12 @@
-import React, { ChangeEvent, ChangeEventHandler, FC, MutableRefObject, useRef, useState } from 'react';
+import React, { ChangeEvent, FC, useRef, useState } from 'react';
 
 interface ISearcherProps {
-    gasHandler: React.Dispatch<React.SetStateAction<number>>,
+    setGasData: React.Dispatch<React.SetStateAction<number>>,
     gasData: number,
 }
 
 
-const Searcher: FC<ISearcherProps> = ({ gasHandler, gasData }) => {
+const Searcher: FC<ISearcherProps> = ({ setGasData, gasData }) => {
 
     let inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -23,7 +23,7 @@ const Searcher: FC<ISearcherProps> = ({ gasHandler, gasData }) => {
             setError("Total gas consumption must be a number higher than zero");
             (inputRef.current as HTMLInputElement).value = "0";
         } else {
-            gasHandler(inputRef.current?.value as unknown as number);
+            setGasData(inputRef.current?.value as unknown as number);
             setError("");
         }
     }
@@ -50,12 +50,13 @@ const Searcher: FC<ISearcherProps> = ({ gasHandler, gasData }) => {
                     />
                     {error && error}
                 </div>
-                <div><input
-                    className="form-btn"
-                    type="button"
-                    value="Search Products"
-                    onClick={formHandler}
-                />
+                <div>
+                    <input
+                        className="form-btn"
+                        type="button"
+                        value="Search Products"
+                        onClick={formHandler}
+                    />
                 </div>
             </div>
         </div>
