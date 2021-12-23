@@ -11,8 +11,6 @@
 //     status: IProductStatus
 // }
 
-import { IcontractLength, IProduct, IProductStatus, ISuppliers } from "../interface/products";
-
 const supplierList = ["British Ash", "LEON", "Scottish Bower", "ED-EFF"];
 
 const randomNames = ["winter prices", "black friday prices", "winter prices", "special prices", "brexit prices", "normal", "spring prices", "normal prices", "standard prices", "spring prices", "winter prices", "easter prices", "spring prices", "that guy", "the another one", "my uncle", "your cousin", "name A", "name B", "name C", "name D", "name E", "Maybe I stop here"];
