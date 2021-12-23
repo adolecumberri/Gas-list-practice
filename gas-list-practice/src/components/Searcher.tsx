@@ -19,7 +19,7 @@ const Searcher: FC<ISearcherProps> = ({ setGasData, gasData }) => {
 
     function formHandler() {
         console.log(isNaN(inputRef.current?.value as unknown as number), inputRef.current?.value as unknown as number < 0);
-        if (isNaN(inputRef.current?.value as unknown as number) || inputRef.current?.value as unknown as number < 0) {
+        if (isNaN(inputRef.current?.value as unknown as number) || inputRef.current?.value as unknown as number <= 0) {
             setError("Total gas consumption must be a number higher than zero");
             (inputRef.current as HTMLInputElement).value = "0";
         } else {
@@ -39,7 +39,9 @@ const Searcher: FC<ISearcherProps> = ({ setGasData, gasData }) => {
     return (
         <div style={container} >
             <div className="gas-form">
-                <div><span className="form-title" >Total gas consumption </span></div>
+                <div>
+                    <span className="form-title" >Total gas consumption </span>
+                </div>
                 <div>
                     <input
                         className="form-input"

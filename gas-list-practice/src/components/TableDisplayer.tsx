@@ -1,5 +1,5 @@
 
-import React, { CSSProperties, FC, useCallback, useState } from 'react';
+import React, { CSSProperties, Dispatch, FC, useCallback, useState } from 'react';
 import { IProduct } from '../interface/products';
 
 
@@ -12,16 +12,6 @@ let s: { [x: string]: CSSProperties } = {
         alignItems: "center",
         minWidth: "300px",
         minHeight: "500px",
-    },
-    backArrow: {
-        padding: "8px",
-        border: "unset",
-        background: "#575757",
-        color: "#fff",
-        fontWeight: "bold",
-        position: "absolute",
-        marginTop: "-50px",
-        marginLeft: "-50px",
     },
     table: {
         display: "table",
@@ -48,15 +38,14 @@ let s: { [x: string]: CSSProperties } = {
 
 }
 
-
-
 interface ITableDisplayerProps {
     data: IProduct[];
-    setGasData: React.Dispatch<React.SetStateAction<number>>,
+    setGasData: Dispatch<React.SetStateAction<number>>,
     gasData: number,
+    setToolTipContent: Dispatch<React.SetStateAction<any>>,
 }
 
-const TableDisplayer: FC<ITableDisplayerProps> = ({ data, setGasData, gasData }) => {
+const TableDisplayer: FC<ITableDisplayerProps> = ({ data, setGasData, gasData, setToolTipContent }) => {
 
 
     let calcAnnualCost = useCallback(
@@ -65,13 +54,35 @@ const TableDisplayer: FC<ITableDisplayerProps> = ({ data, setGasData, gasData })
         , [gasData]);
 
 
+    const loadToolTip = useCallback((
+        a : IProduct) =>
+        <>
+            <div className="info-body">
+                <div>
+                    <h4 className="" style={{ borderBottom: "2px solid #000" }} >More Information: </h4>
+                </div>
+                {Object.keys(a).map(value =>
+                    <div>
+                        <span>{value}:</span> <span>{a[value]}</span>
+                    </div>)}
+            </div>
+        </>
+        , []);
+
+
     let loadTable = useCallback(() =>
         data.map((product) =>
             <div style={s.tableRow}>
                 <div style={s.tableCol}>{product.supplier}</div>
                 <div style={s.tableCol}>{calcAnnualCost(product)}</div>
                 <div style={s.tableCol}>{product.contractlength} months</div>
-                <div style={s.tableCol}> <input type="button" value="btn" /></div>
+                <div style={s.tableCol}>
+                    <input
+                        type="button"
+                        value="btn"
+                        onClick={() => setToolTipContent(loadToolTip(product))}
+                    />
+                </div>
             </div>
         )
         , [data.length, data]);
@@ -80,7 +91,7 @@ const TableDisplayer: FC<ITableDisplayerProps> = ({ data, setGasData, gasData })
         <div style={s.container} >
 
             <div style={s.table}>
-                <input style={s.backArrow} type="button" value="X" onClick={() => setGasData(0)} />
+                <input className="backArrow" type="button" value="X" onClick={() => setGasData(0)} />
                 <div className="table-heder" style={s.tableRow}>
                     <div style={s.tableCol}>Supplier</div>
                     <div style={s.tableCol}>Annual Cost</div>

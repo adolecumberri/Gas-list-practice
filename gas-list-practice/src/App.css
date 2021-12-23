@@ -1,10 +1,10 @@
-
 * {
   margin: 0;
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
@@ -15,7 +15,16 @@ html, body {
   display: flex;
 }
 
-
+.backArrow {
+  padding: 8px;
+  border: unset;
+  background: #575757;
+  color: #fff;
+  font-weight: bold;
+  position: absolute;
+  margin-top: -50px;
+  margin-left: -50px;
+}
 
 /* GAS-FORM STYLES */
 
@@ -25,15 +34,22 @@ html, body {
   width: 200px;
 }
 
-.gas-form > div{
+/* Aquí mezclo 2 secciones (Searcher y MoreInfo)
+pero al igual que muchas cosas en el proyecto, 
+lo hago porque puedo. No por correccion. */
+.gas-form>div,
+.info-body>div {
   margin: 16px 0;
   width: 100%;
-  display: inherit;
-  justify-content: center;
   align-items: center;
 }
 
-.gas-form > .form-title{}
+.gas-form>div {
+  display: inherit;
+  justify-content: center;
+}
+
+.gas-form>.form-title {}
 
 .gas-form input {
   width: 100%;
@@ -42,19 +58,28 @@ html, body {
   box-sizing: border-box;
 }
 
-.gas-form > .form-input{}
 
-input.form-btn{
+.gas-form>.form-input {}
+
+input.form-btn {
   color: #fff;
   background-color: #70ad47;
   border: unset;
 }
 
 /* Table displayer STYLES */
-.table-heder > div {
+
+.table-heder>div {
   background-color: #70ad47;
   height: 40px;
   color: #fff;
   line-height: 40px !important;
 }
 
+/* More Info Styles */
+
+.info-body>div {
+  justify-content: space-between;
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
